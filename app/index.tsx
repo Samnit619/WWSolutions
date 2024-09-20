@@ -6,7 +6,7 @@ export default function Index() {
   return (
     <SafeAreaView className="bg-black">
       <ImageBackground
-        className=" flex items-center h-screen justify-between "
+        className=" flex items-center h-screen justify-between"
         source={require("../assets/images/authpage.jpg")}
       >
         <View className="flex">
