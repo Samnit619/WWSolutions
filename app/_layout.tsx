@@ -1,9 +1,9 @@
 import { Stack } from "expo-router";
-import { red } from "react-native-reanimated/lib/typescript/reanimated2/Colors";
 
 export default function RootLayout() {
   return (
     <Stack>
+      <Stack.Screen name="home" options={{ headerShown: false }} />
       <Stack.Screen
         name="index"
         options={{ headerShown: false, statusBarColor: "black" }}
@@ -12,3 +12,5 @@ export default function RootLayout() {
     </Stack>
   );
 }
+
+
