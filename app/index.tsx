@@ -28,7 +28,7 @@ export default function Index() {
           <Text className=" text-[#ffffff] pb-7">
             Integrated Technology Solutions
           </Text>
-          <View className="flex flex-row gap-3 justify-center mb-[60px]">
+          <View className="flex flex-row gap-3 justify-center mb-[35px]">
             <Link
               href={"/auth/Signin"}
               className="text-white bg-transparent border-2 border-white px-[60px] py-3 rounded-full font-bold"
@@ -43,8 +43,8 @@ export default function Index() {
             </Link>
           </View>
           <Link
-            href="/home"
-            className="text-[#333333] bg-white border-2 border-white px-[60px] py-3 rounded-full font-bold mb-[40px] "
+            href={"./home/homePage"}
+            className="text-[#333333] bg-white border-2 border-white px-[60px] py-3 rounded-full font-bold mb-[80px] "
           >
             Home
           </Link>

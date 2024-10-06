@@ -1,14 +1,23 @@
 import React from "react";
-import { View, Text, TouchableOpacity, StatusBar } from "react-native";
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  StatusBar,
+  Pressable,
+} from "react-native";
 import { useRouter } from "expo-router";
 
 export default function HomeScreen() {
   const router = useRouter();
 
   return (
-    <View className="flex-1 bg-gray-100 p-4">
-      <StatusBar barStyle="dark-content" backgroundColor="#fff" />
+    <View className="p-4">
       {/* Header */}
+      <View className="py-5">
+        <Text className="text-stone-400 font-semibold text-2xl">Hello,</Text>
+        <Text className="font-semibold text-2xl">Samnit Bagha</Text>
+      </View>
       <View className="mb-6">
         <Text className="text-3xl font-bold text-gray-900">
           Integrated TechnologySolutions
@@ -54,7 +63,7 @@ export default function HomeScreen() {
       <View className="mt-8">
         <TouchableOpacity
           className="bg-green-600 p-4 rounded-lg"
-          onPress={() => router.push("/contact")}
+          onPress={() => router.push("/homecontact")}
         >
           <Text className="text-white text-center">Contact Us</Text>
         </TouchableOpacity>
