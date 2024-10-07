@@ -43,7 +43,7 @@ export default function Index() {
             </Link>
           </View>
           <Link
-            href={"./home/homePage"}
+            href={"/home/homePage"}
             className="text-[#333333] bg-white border-2 border-white px-[60px] py-3 rounded-full font-bold mb-[80px] "
           >
             Home

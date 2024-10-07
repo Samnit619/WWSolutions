@@ -28,8 +28,14 @@ const HomeLayout = () => {
           },
         }}
       >
-        <Tabs.Screen name="homePage" options={{ title: "Home" }} />
-        <Tabs.Screen name="contact" options={{ title: "Contact" }} />
+        <Tabs.Screen
+          name="homePage"
+          options={{ title: "Home", headerShown: false }}
+        />
+        <Tabs.Screen
+          name="contact"
+          options={{ title: "Contact", headerShown: false }}
+        />
       </Tabs>
     </>
   );
