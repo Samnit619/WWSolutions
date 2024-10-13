@@ -1,4 +1,4 @@
-import { View, Text } from "react-native";
+import { View, Text, Image } from "react-native";
 import React from "react";
 import { Tabs } from "expo-router";
 
@@ -9,11 +9,15 @@ const HomeLayout = () => {
         screenOptions={{
           tabBarStyle: {
             backgroundColor: "#f8f9fa", // Light background color
-            borderTopColor: "#ccc", // Border color
-            height: 60, // Height of the tab bar
+            height: 65, // Height of the tab bar
+            marginHorizontal: 7,
+            marginBottom: 15,
+            borderRadius: 25,
+            overflow: "hidden",
+            position: "absolute",
           },
           tabBarLabelStyle: {
-            fontSize: 14, // Font size for the tab labels
+            fontSize: 13, // Font size for the tab labels
             color: "#333", // Label color
             fontWeight: "bold",
             textAlign: "center",
@@ -22,19 +26,58 @@ const HomeLayout = () => {
             justifyContent: "center", // Center the label vertically
             alignItems: "center", // Center horizontally
           },
-          tabBarActiveBackgroundColor: "#e3e3e3",
-          tabBarIconStyle: {
-            display: "none",
-          },
+          tabBarShowLabel: false,
         }}
       >
         <Tabs.Screen
           name="homePage"
-          options={{ title: "Home", headerShown: false }}
+          options={{
+            headerShown: false,
+            tabBarIcon: ({ focused }) => (
+              <>
+                <Image
+                  source={require("../../assets/images/TabBar/home.png")}
+                  resizeMode="contain"
+                  className="h-6 w-6"
+                />
+                {focused ? <Text className="font-medium ">Home</Text> : ""}
+              </>
+            ),
+          }}
         />
         <Tabs.Screen
-          name="contact"
-          options={{ title: "Contact", headerShown: false }}
+          name="settings"
+          options={{
+            title: "Settings",
+            headerShown: false,
+            tabBarIcon: ({ focused }) => (
+              <>
+                <Image
+                  source={require("../../assets/images/TabBar/settings.png")}
+                  resizeMode="contain"
+                  className="h-6 w-6 "
+                />
+                {focused ? <Text className="font-medium">Settings</Text> : ""}
+              </>
+            ),
+          }}
+        />
+        <Tabs.Screen
+          name="profile"
+          options={{
+            title: "Profile",
+            headerShown: false,
+            tabBarIcon: ({ focused }) => (
+              <>
+                <Image
+                  source={require("../../assets/images/TabBar/profile.png")}
+                  resizeMode="contain"
+                  className="h-6 w-6 "
+                />
+                {focused ? <Text className="font-medium">Profile</Text> : ""}
+              </>
+            ),
+          }}
         />
       </Tabs>
     </>
