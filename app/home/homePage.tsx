@@ -31,13 +31,16 @@ export default function HomeScreen() {
       </View>
       <View className="mx-2">
         <TextInput
-          className="h-[45px] px-5 bg-[#e3e3e3] rounded-xl border-2 border-stone-300 font-semibold placeholder:font-inter placeholder:font-semibold placeholder:text-stone-300 text-stone-500 text-base"
+          className="h-[45px] px-5 bg-[#eeeeee] rounded-xl border-2 border-stone-300 font-semibold placeholder:font-inter placeholder:font-semibold placeholder:text-stone-300 text-stone-500 text-base"
           placeholder="Search"
         />
       </View>
       <Text className="font-semibold text-[30px] mt-3 px-4">Explore More,</Text>
       <View className="flex-row flex-wrap gap-2 mt-2 justify-center">
-        <TouchableOpacity className="bg-transparent h-[130px] w-[185px] rounded-xl flex-row justify-end items-end overflow-hidden">
+        <TouchableOpacity
+          onPress={() => router.push("/itSolutions")}
+          className="bg-transparent h-[130px] w-[185px] rounded-xl flex-row justify-end items-end overflow-hidden"
+        >
           <ImageBackground
             source={require("../../assets/images/ITSolutions.png")}
             resizeMode="cover"

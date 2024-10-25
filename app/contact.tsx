@@ -1,26 +1,26 @@
-import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, Alert } from 'react-native';
-import { useRouter } from 'expo-router';
+import React, { useState } from "react";
+import { View, Text, TextInput, TouchableOpacity, Alert } from "react-native";
+import { useRouter } from "expo-router";
 
 export default function ContactScreen() {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [message, setMessage] = useState('');
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
   const router = useRouter();
 
   const handleSubmit = () => {
     // Basic form validation
     if (!name || !email || !message) {
-      Alert.alert('Error', 'Please fill in all fields.');
+      Alert.alert("Error", "Please fill in all fields.");
       return;
     }
 
     // Handle form submission (you could send this to an API)
-    Alert.alert('Success', 'Your message has been sent!');
+    Alert.alert("Success", "Your message has been sent!");
     // Clear the form
-    setName('');
-    setEmail('');
-    setMessage('');
+    setName("");
+    setEmail("");
+    setMessage("");
   };
 
   return (
@@ -60,7 +60,7 @@ export default function ContactScreen() {
 
       <TouchableOpacity
         className="mt-4"
-        onPress={() => router.push('/')}
+        onPress={() => router.push("/home/homePage")}
       >
         <Text className="text-blue-600 text-center">Back to Home</Text>
       </TouchableOpacity>

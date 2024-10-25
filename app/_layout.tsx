@@ -15,6 +15,14 @@ export default function RootLayout() {
         name="index"
         options={{ headerShown: false, statusBarColor: "black" }}
       />
+      <Stack.Screen
+        name="contact"
+        options={{ headerShown: false, statusBarStyle: "dark" }}
+      />
+      <Stack.Screen
+        name="itSolutions"
+        options={{ statusBarStyle: "dark", headerTitle: "IT Solutions" }}
+      />
     </Stack>
   );
 }

@@ -1,14 +1,52 @@
 import { View, Text, Image } from "react-native";
 import React from "react";
-import { Tabs } from "expo-router";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import Animated, { Easing, withTiming } from "react-native-reanimated";
+import {
+  useAnimatedStyle,
+  useSharedValue,
+  withSpring,
+} from "react-native-reanimated";
+import Profile from "./profile";
+import Settings from "./settings";
+import HomeScreen from "./homePage";
 
+const Tab = createBottomTabNavigator();
+
+const TabIcon = ({ focused, itemSource, label }: any) => {
+  const scale = useSharedValue(focused ? 1.05 : 1);
+  React.useEffect(() => {
+    scale.value = withTiming(focused ? 1.05 : 1, {
+      duration: 300,
+      easing: Easing.bounce,
+    });
+  }, [focused]);
+
+  const animatedStyle = useAnimatedStyle(() => {
+    return {
+      transform: [{ scale: scale.value }],
+    };
+  }, [focused]);
+  return (
+    <View className="justify-center items-center">
+      <Animated.View style={animatedStyle}>
+        <Animated.Image
+          source={itemSource}
+          resizeMode="contain"
+          style={[{ height: 24, width: 24 }, animatedStyle]}
+        />
+      </Animated.View>
+      {focused ? <Text className="font-medium text-xs mt-1">{label}</Text> : ""}
+    </View>
+  );
+};
 const HomeLayout = () => {
   return (
     <>
-      <Tabs
+      <Tab.Navigator
         screenOptions={{
           tabBarStyle: {
-            backgroundColor: "#f8f9fa", // Light background color
+            backgroundColor: "#f2f2f2", // Light background color
             height: 65, // Height of the tab bar
             marginHorizontal: 7,
             marginBottom: 15,
@@ -29,57 +67,51 @@ const HomeLayout = () => {
           tabBarShowLabel: false,
         }}
       >
-        <Tabs.Screen
+        <Tab.Screen
           name="homePage"
+          component={HomeScreen}
           options={{
             headerShown: false,
             tabBarIcon: ({ focused }) => (
-              <>
-                <Image
-                  source={require("../../assets/images/TabBar/home.png")}
-                  resizeMode="contain"
-                  className="h-6 w-6"
-                />
-                {focused ? <Text className="font-medium ">Home</Text> : ""}
-              </>
+              <TabIcon
+                focused={focused}
+                itemSource={require("../../assets/images/TabBar/home.png")}
+                label="Home"
+              />
             ),
           }}
         />
-        <Tabs.Screen
+        <Tab.Screen
           name="settings"
+          component={Settings}
           options={{
             title: "Settings",
             headerShown: false,
-            tabBarIcon: ({ focused }) => (
-              <>
-                <Image
-                  source={require("../../assets/images/TabBar/settings.png")}
-                  resizeMode="contain"
-                  className="h-6 w-6 "
-                />
-                {focused ? <Text className="font-medium">Settings</Text> : ""}
-              </>
+            tabBarIcon: ({ focused }: any) => (
+              <TabIcon
+                focused={focused}
+                itemSource={require("../../assets/images/TabBar/settings.png")}
+                label="Settings"
+              />
             ),
           }}
         />
-        <Tabs.Screen
+        <Tab.Screen
           name="profile"
+          component={Profile}
           options={{
             title: "Profile",
             headerShown: false,
             tabBarIcon: ({ focused }) => (
-              <>
-                <Image
-                  source={require("../../assets/images/TabBar/profile.png")}
-                  resizeMode="contain"
-                  className="h-6 w-6 "
-                />
-                {focused ? <Text className="font-medium">Profile</Text> : ""}
-              </>
+              <TabIcon
+                focused={focused}
+                itemSource={require("../../assets/images/TabBar/profile.png")}
+                label="Profile"
+              />
             ),
           }}
         />
-      </Tabs>
+      </Tab.Navigator>
     </>
   );
 };
