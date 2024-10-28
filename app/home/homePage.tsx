@@ -38,7 +38,7 @@ export default function HomeScreen() {
       <Text className="font-semibold text-[30px] mt-3 px-4">Explore More,</Text>
       <View className="flex-row flex-wrap gap-2 mt-2 justify-center">
         <TouchableOpacity
-          onPress={() => router.push("/itSolutions")}
+          onPress={() => router.push("/ItSolutions/itSolutions")}
           className="bg-transparent h-[130px] w-[185px] rounded-xl flex-row justify-end items-end overflow-hidden"
         >
           <ImageBackground
@@ -49,7 +49,10 @@ export default function HomeScreen() {
             <Text className="font-semibold text-white p-3">IT Solutions</Text>
           </ImageBackground>
         </TouchableOpacity>
-        <TouchableOpacity className="bg-orange-400 h-[130px] w-[185px] rounded-xl flex-row justify-end items-end overflow-hidden">
+        <TouchableOpacity
+          className="bg-orange-400 h-[130px] w-[185px] rounded-xl flex-row justify-end items-end overflow-hidden"
+          onPress={() => router.push("/CaseStudy/caseStudy")}
+        >
           <ImageBackground
             source={require("../../assets/images/caseStudy.png")}
             resizeMode="cover"

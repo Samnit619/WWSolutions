@@ -20,8 +20,12 @@ export default function RootLayout() {
         options={{ headerShown: false, statusBarStyle: "dark" }}
       />
       <Stack.Screen
-        name="itSolutions"
-        options={{ statusBarStyle: "dark", headerTitle: "IT Solutions" }}
+        name="ItSolutions"
+        options={{ headerShown: false, statusBarStyle: "dark" }}
+      />
+      <Stack.Screen
+        name="CaseStudy"
+        options={{ headerShown: false, statusBarStyle: "dark" }}
       />
     </Stack>
   );
