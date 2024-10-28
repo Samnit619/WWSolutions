@@ -4,7 +4,7 @@ import React from "react";
 const Settings = () => {
   return (
     <View>
-      <Text>S</Text>
+      <Text>Salskfjlkasjflak</Text>
     </View>
   );
 };
