@@ -76,7 +76,12 @@ export default function HomeScreen() {
               <Text className="font-semibold text-white p-3">Case Studies</Text>
             </ImageBackground>
           </TouchableOpacity>
-          <TouchableOpacity className="bg-orange-400 h-[130px] w-[180px] rounded-xl flex-row justify-end items-end overflow-hidden">
+          <TouchableOpacity
+            className="bg-orange-400 h-[130px] w-[180px] rounded-xl flex-row justify-end items-end overflow-hidden"
+            onPress={() => {
+              router.push("/(pages)/company");
+            }}
+          >
             <ImageBackground
               source={require("../../../assets/images/company.png")}
               resizeMode="cover"
