@@ -12,6 +12,10 @@ const CaseStudyLayout = () => {
         name="itSolutions"
         options={{ statusBarStyle: "dark", headerShown: false }}
       />
+      <Stack.Screen
+        name="company"
+        options={{ statusBarStyle: "dark", headerShown: false }}
+      />
     </Stack>
   );
 };

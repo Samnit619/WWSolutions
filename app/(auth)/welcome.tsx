@@ -3,7 +3,6 @@ import { Image, ImageBackground, Text, View, StatusBar } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 const Onboarding = () => {
-
   return (
     <SafeAreaView className="bg-black">
       <ImageBackground
@@ -17,7 +16,7 @@ const Onboarding = () => {
             className="h-[100px] mt-14"
           />
         </View>
-        <View className="flex justify-center items-center mb-12">
+        <View className="flex justify-center items-center mb-15">
           <Text className=" text-[#ffffff] pb-7">
             Integrated Technology Solutions
           </Text>
@@ -37,8 +36,8 @@ const Onboarding = () => {
           </View>
         </View>
       </ImageBackground>
-    </SafeAreaView >
+    </SafeAreaView>
   );
-}
+};
 
-export default Onboarding
+export default Onboarding;
