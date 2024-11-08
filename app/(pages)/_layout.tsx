@@ -16,6 +16,14 @@ const CaseStudyLayout = () => {
         name="company"
         options={{ statusBarStyle: "dark", headerShown: false }}
       />
+      <Stack.Screen
+        name="contact"
+        options={{ statusBarStyle: "dark", headerShown: false }}
+      />
+      <Stack.Screen
+        name="aboutUs"
+        options={{ statusBarStyle: "dark", headerShown: false }}
+      />
     </Stack>
   );
 };
