@@ -1,15 +1,14 @@
-import { Redirect } from "expo-router"
-import { useAuth } from "@clerk/clerk-react"
+import { Redirect } from "expo-router";
+import { useAuth } from "@clerk/clerk-react";
 
 const Home = () => {
-
-  const { isSignedIn } = useAuth()
+  const { isSignedIn } = useAuth();
 
   if (isSignedIn) {
-    return <Redirect href={'/(root)/(tabs)/home'} />
+    return <Redirect href={"/(tabs)/home"} />;
   }
 
-  const redirect: string = "/(auth)/welcome"
+  const redirect: string = "/(auth)/welcome";
   return <Redirect href={redirect} />;
-}
-export default Home
+};
+export default Home;
