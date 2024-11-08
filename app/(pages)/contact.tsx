@@ -79,7 +79,7 @@ export default function ContactScreen() {
 
         <TouchableOpacity
           className="mt-4"
-          onPress={() => router.push("/(root)/(tabs)/home")}
+          onPress={() => router.push("/(tabs)/home")}
         >
           <Text className="text-blue-600 text-center">Back to Home</Text>
         </TouchableOpacity>
