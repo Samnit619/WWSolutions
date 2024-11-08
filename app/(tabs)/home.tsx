@@ -11,6 +11,7 @@ import {
   TextInput,
 } from "react-native";
 import { useRouter } from "expo-router";
+import { LinearGradient } from "expo-linear-gradient";
 
 export default function HomeScreen() {
   const { user } = useUser();
@@ -21,7 +22,12 @@ export default function HomeScreen() {
     : require("../../assets/images/samnit123.jpg");
 
   return (
-    <View className="p-4 bg-white h-screen">
+    <LinearGradient
+      className="p-4 h-screen "
+      colors={["#ffffff", "#d3ffb2c6", "#69ff75"]}
+      start={{ x: 0.2, y: 0.2 }}
+      end={{ x: 0.8, y: 1 }}
+    >
       <SignedIn>
         {/* Header */}
         <View className="py-4 px-4 flex-row justify-between items-center">
@@ -40,7 +46,7 @@ export default function HomeScreen() {
         </View>
         <View className="mx-2">
           <TextInput
-            className="h-[45px] px-5 bg-[#e3e3e3] rounded-xl border-2 border-stone-300 font-semibold placeholder:font-inter placeholder:font-semibold placeholder:text-stone-300 text-stone-500 text-base"
+            className="h-[45px] px-5 bg-[#f3f3f3] rounded-xl border-2 border-stone-300 font-semibold placeholder:font-inter placeholder:font-semibold placeholder:text-stone-300 text-stone-500 text-base"
             placeholder="Search"
           />
         </View>
@@ -135,6 +141,6 @@ export default function HomeScreen() {
           <Text>Sign Up</Text>
         </Link>
       </SignedOut>
-    </View>
+    </LinearGradient>
   );
 }
