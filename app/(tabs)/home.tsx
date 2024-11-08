@@ -18,7 +18,7 @@ export default function HomeScreen() {
 
   let profileUrl = user?.hasImage
     ? { uri: user.imageUrl }
-    : require("../../../assets/images/samnit123.jpg");
+    : require("../../assets/images/samnit123.jpg");
 
   return (
     <View className="p-4 bg-white h-screen">
@@ -55,7 +55,7 @@ export default function HomeScreen() {
             className="bg-transparent h-[130px] w-[180px] rounded-xl flex-row justify-end items-end overflow-hidden"
           >
             <ImageBackground
-              source={require("../../../assets/images/ITSolutions.png")}
+              source={require("../../assets/images/ITSolutions.png")}
               resizeMode="cover"
               className="h-[100%] w-[100%] flex justify-end items-end"
             >
@@ -69,7 +69,7 @@ export default function HomeScreen() {
             className="bg-orange-400 h-[130px] w-[180px] rounded-xl flex-row justify-end items-end overflow-hidden"
           >
             <ImageBackground
-              source={require("../../../assets/images/caseStudy.png")}
+              source={require("../../assets/images/caseStudy.png")}
               resizeMode="cover"
               className="h-[100%] w-[100%] flex justify-end items-end"
             >
@@ -83,7 +83,7 @@ export default function HomeScreen() {
             }}
           >
             <ImageBackground
-              source={require("../../../assets/images/company.png")}
+              source={require("../../assets/images/company.png")}
               resizeMode="cover"
               className="h-[100%] w-[100%] flex justify-end items-end"
             >
@@ -92,7 +92,7 @@ export default function HomeScreen() {
           </TouchableOpacity>
           <TouchableOpacity className="bg-orange-400 h-[130px] w-[180px] rounded-xl flex-row justify-end items-end overflow-hidden">
             <ImageBackground
-              source={require("../../../assets/images/blog.png")}
+              source={require("../../assets/images/blog.png")}
               resizeMode="cover"
               className="h-[100%] w-[100%] flex justify-end items-end"
             >
@@ -106,16 +106,19 @@ export default function HomeScreen() {
             onPress={() => router.push("/(pages)/contact")}
           >
             <ImageBackground
-              source={require("../../../assets/images/aboutus.png")}
+              source={require("../../assets/images/aboutus.png")}
               resizeMode="cover"
               className="h-[100%] w-[100%] flex justify-end items-end"
             >
               <Text className="font-semibold text-white p-3">Contact Us</Text>
             </ImageBackground>
           </TouchableOpacity>
-          <TouchableOpacity className="bg-orange-400 h-[130px] w-[180px] rounded-xl flex-row justify-end items-end overflow-hidden">
+          <TouchableOpacity
+            className="bg-orange-400 h-[130px] w-[180px] rounded-xl flex-row justify-end items-end overflow-hidden"
+            onPress={() => router.push("/(pages)/aboutUs")}
+          >
             <ImageBackground
-              source={require("../../../assets/images/contact.png")}
+              source={require("../../assets/images/contact.png")}
               resizeMode="cover"
               className="h-[100%] w-[100%] flex justify-end items-end"
             >
