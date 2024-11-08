@@ -42,7 +42,7 @@ export default function RootLayout() {
           />
           <Stack.Screen name="(auth)" options={{ headerShown: false }} />
           <Stack.Screen
-            name="(root)"
+            name="(tabs)"
             options={{ headerShown: false, statusBarStyle: "dark" }}
           />
           <Stack.Screen name="+not-found" />
