@@ -91,7 +91,7 @@ const Company = () => {
           </View>
         </LinearGradient>
         <LinearGradient
-          colors={["#396ea1", "#396ea1"]}
+          colors={["#51a2ee", "#396ea1"]}
           className="h-[280px] rounded-2xl p-5"
         >
           <View className="h-[150px] bg-white rounded-xl p-4">
@@ -165,7 +165,7 @@ const Company = () => {
             source={require("../../assets/images/company/target.png")}
             className="h-[150px] w-[150px] m-4 "
           />
-          <View className="absolute bottom-4 right-5 bg-red-400 w-[240px] py-2 px-3 rounded-xl ">
+          <View className="absolute bottom-4 right-5 bg-red-400 w-[250px] py-2 px-4 rounded-xl ">
             <Text className="text-[#ffffff] font-semibold text-[15px] ">
               Offer the best customized solution for all clients. To be a model
               of technological integration in the market worldwide To be
