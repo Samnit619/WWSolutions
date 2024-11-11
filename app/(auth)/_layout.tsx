@@ -7,9 +7,22 @@ const Layout = () => {
     <GestureHandlerRootView>
       <StatusBar style="dark" />
       <Stack screenOptions={{ headerShown: false }}>
-        <Stack.Screen name="welcome" options={{ headerShown: false }} />
-        <Stack.Screen name="sign-up" options={{ headerShown: false }} />
-        <Stack.Screen name="sign-in" options={{ headerShown: false }} />
+        <Stack.Screen
+          name="welcome"
+          options={{
+            headerShown: false,
+            statusBarStyle: "light",
+            statusBarColor: "black",
+          }}
+        />
+        <Stack.Screen
+          name="sign-up"
+          options={{ headerShown: false, statusBarStyle: "dark" }}
+        />
+        <Stack.Screen
+          name="sign-in"
+          options={{ headerShown: false, statusBarStyle: "dark" }}
+        />
       </Stack>
     </GestureHandlerRootView>
   );

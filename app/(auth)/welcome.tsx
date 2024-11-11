@@ -16,7 +16,7 @@ const Onboarding = () => {
             className="h-[100px] mt-14"
           />
         </View>
-        <View className="flex justify-center items-center mb-15">
+        <View className="flex justify-center items-center mb-20">
           <Text className=" text-[#ffffff] pb-7">
             Integrated Technology Solutions
           </Text>
