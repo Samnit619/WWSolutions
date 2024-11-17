@@ -24,7 +24,7 @@ export default function HomeScreen() {
   return (
     <LinearGradient
       className="p-4 h-screen "
-      colors={["#ffffff", "#d3ffb2c6", "#69ff75"]}
+      colors={["#6cb676", "#396ea1"]}
       start={{ x: 0.2, y: 0.2 }}
       end={{ x: 0.8, y: 1 }}
     >
@@ -32,10 +32,12 @@ export default function HomeScreen() {
         {/* Header */}
         <View className="py-4 px-4 flex-row justify-between items-center">
           <View>
-            <Text className="text-stone-400 font-semibold text-2xl">
+            <Text className="text-stone-100 font-semibold text-2xl">
               Hello,
             </Text>
-            <Text className="font-semibold text-2xl">{user?.fullName}</Text>
+            <Text className="font-semibold text-2xl text-[#333333]">
+              {user?.fullName}
+            </Text>
           </View>
           <View>
             <Image
@@ -46,11 +48,11 @@ export default function HomeScreen() {
         </View>
         <View className="mx-2">
           <TextInput
-            className="h-[45px] px-5 bg-[#f3f3f3] rounded-xl border-2 border-stone-300 font-semibold placeholder:font-inter placeholder:font-semibold placeholder:text-stone-300 text-stone-500 text-base"
+            className="h-[45px] px-5 bg-blend-color-burn rounded-xl border-2 border-stone-200 font-semibold placeholder:font-semibold placeholder:text-[#e3e3e3] text-stone-200 text-base"
             placeholder="Search"
           />
         </View>
-        <Text className="font-semibold text-[30px] mt-3 px-4">
+        <Text className="font-semibold text-[30px] mt-3 px-4 text-[#333333]">
           Explore More,
         </Text>
         <View className="flex-row flex-wrap gap-2 mt-2 justify-center">
@@ -89,7 +91,7 @@ export default function HomeScreen() {
             }}
           >
             <ImageBackground
-              source={require("../../assets/images/company.png")}
+              source={require("../../assets/images/company.jpeg")}
               resizeMode="cover"
               className="h-[100%] w-[100%] flex justify-end items-end"
             >
