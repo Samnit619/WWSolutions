@@ -4,27 +4,20 @@ import { Tabs } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
 
 const Layout = () => {
-
-  const TabIcon = ({
-    source,
-    focused,
-  }: {
-    source: any;
-    focused: boolean;
-  }) => (
+  const TabIcon = ({ source, focused }: { source: any; focused: boolean }) => (
     <View
-      className={`flex flex-row justify-center items-center rounded-full ${focused ? "bg-general-300" : ""}`}
+      className={`flex flex-row justify-center items-center rounded-full ${
+        focused ? "bg-[#333333]" : ""
+      }`}
     >
       <View
-        className={`rounded-full w-12 h-12 items-center justify-center ${focused ? "bg-general-400" : ""}`}
+        className={`rounded-full w-12 h-12 items-center justify-center ${
+          focused ? "bg-general-400" : ""
+        }`}
       >
-        <Ionicons
-          name={source}
-          size={26}
-        />
+        <Ionicons name={source} size={26} />
       </View>
     </View>
-
   );
   return (
     <>
@@ -34,7 +27,7 @@ const Layout = () => {
           tabBarInactiveTintColor: "white",
           tabBarShowLabel: false,
           tabBarStyle: {
-            backgroundColor: "white",
+            backgroundColor: "#f0f0f0",
             borderRadius: 50,
             paddingBottom: 0, // ios only
             overflow: "hidden",

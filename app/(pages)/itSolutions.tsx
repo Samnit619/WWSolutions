@@ -119,7 +119,7 @@ const itSolutions = () => {
                   <Button
                     className="bg-green-500 py-1"
                     colorScheme="coolGray"
-                    onPress={() => CardOpen("")}
+                    onPress={() => router.push("/(pages)/IT/Cloud")}
                     ref={cancelRef}
                   >
                     <View className="flex-row items-center justify-center gap-1">
