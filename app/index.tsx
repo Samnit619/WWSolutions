@@ -5,16 +5,16 @@ const Home = () => {
   const { isSignedIn } = useAuth();
 
   if (isSignedIn === undefined) {
-    return null; // or a loading indicator if needed
+    console.log("lol");
+    return null;
   }
 
   if (isSignedIn) {
     console.log("hello");
     return <Redirect href={"/(tabs)/home"} />;
-  } else {
-    console.log("not hello");
-    return <Redirect href={"/(auth)/welcome"} />;
   }
+
+  return <Redirect href={"/(auth)/welcome"} />;
 };
 
 export default Home;
