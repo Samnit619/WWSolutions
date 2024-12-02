@@ -1,10 +1,10 @@
-import { View, Text, Image, ImageSourcePropType } from "react-native";
+
+import { View } from "react-native";
 import React from "react";
 import { Tabs } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
 
 const Layout = () => {
-
   const TabIcon = ({
     source,
     focused,
@@ -13,39 +13,36 @@ const Layout = () => {
     focused: boolean;
   }) => (
     <View
-      className={`flex flex-row justify-center items-center rounded-full ${focused ? "bg-general-300" : ""}`}
+      className={`flex flex-row justify-center items-center rounded-full ${focused ? "bg-general-300" : ""
+        }`}
     >
       <View
-        className={`rounded-full w-12 h-12 items-center justify-center ${focused ? "bg-general-400" : ""}`}
+        className={`rounded-full w-12 h-12 items-center justify-center ${focused ? "bg-general-400" : ""
+          }`}
       >
-        <Ionicons
-          name={source}
-          size={26}
-        />
+        <Ionicons name={source} size={26} />
       </View>
     </View>
-
   );
+
   return (
     <>
       <Tabs
         screenOptions={{
           tabBarActiveTintColor: "white",
-          tabBarInactiveTintColor: "white",
+          tabBarInactiveTintColor: "gray",
           tabBarShowLabel: false,
           tabBarStyle: {
             backgroundColor: "white",
-            borderRadius: 50,
-            paddingBottom: 0, // ios only
-            overflow: "hidden",
-            marginHorizontal: 20,
-            marginBottom: 20,
-            height: 78,
+            height: 64,
+            marginHorizontal: 0,
+            marginBottom: 0,
+            paddingBottom: 20,
+            paddingTop: 10,
             display: "flex",
             justifyContent: "space-between",
             alignItems: "center",
             flexDirection: "row",
-            position: "absolute",
           },
         }}
       >
@@ -59,12 +56,22 @@ const Layout = () => {
           }}
         />
         <Tabs.Screen
-          name="settings"
+          name="projects"
           options={{
-            title: "Settings",
+            title: "Projects",
             headerShown: false,
             tabBarIcon: ({ focused }) => (
-              <TabIcon source={"settings-outline"} focused={focused} />
+              <TabIcon source={"clipboard-outline"} focused={focused} />
+            ),
+          }}
+        />
+        <Tabs.Screen
+          name="browse"
+          options={{
+            title: "Browse",
+            headerShown: false,
+            tabBarIcon: ({ focused }) => (
+              <TabIcon source={"grid-outline"} focused={focused} />
             ),
           }}
         />
@@ -84,3 +91,4 @@ const Layout = () => {
 };
 
 export default Layout;
+

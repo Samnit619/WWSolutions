@@ -93,7 +93,7 @@ const SignUp = () => {
   return (
     <SafeAreaView className="flex-1 bg-white">
       <ScrollView className="flex-1 bg-white">
-        <View className="flex-1 bg-white">
+        <View className="mt-8 flex-1 bg-white">
           <Text className="text-2xl text-black font-semibold pb-5 pl-5">
             Create Your Account
           </Text>
@@ -199,7 +199,7 @@ const SignUp = () => {
                 </Text>
                 <CustomButton
                   title="Browse Home"
-                  onPress={() => router.push(`/(root)/(tabs)/home`)}
+                  onPress={() => router.push(`/(tabs)/home`)}
                   className="mt-5"
                 />
               </View>

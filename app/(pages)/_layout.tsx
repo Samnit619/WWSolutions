@@ -21,6 +21,14 @@ const CaseStudyLayout = () => {
         options={{ statusBarStyle: "dark", headerShown: false }}
       />
       <Stack.Screen
+        name="projectPage"
+        options={{ statusBarStyle: "dark", headerShown: false }}
+      />
+      <Stack.Screen
+        name="services/[id]"
+        options={{ statusBarStyle: "dark", headerShown: false }}
+      />
+      <Stack.Screen
         name="aboutUs"
         options={{ statusBarStyle: "dark", headerShown: false }}
       />

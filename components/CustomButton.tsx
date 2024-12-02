@@ -12,6 +12,8 @@ const getBgVariantStyle = (variant: ButtonProps["bgVariant"]) => {
       return "bg-green-500";
     case "outline":
       return "bg-transparent border-neutral-300 border-[0.5px]";
+    case "black":
+      return "bg-slate-950"
     default:
       return "bg-[#0286FF]";
   }
@@ -49,7 +51,7 @@ const CustomButton = ({
       {...props}
     >
       {IconLeft && <IconLeft />}
-      <Text className={`text-lg font-inter font-bold ${getTextVariantStyle(textVariant)}`}>
+      <Text className={`text-lg font-bold ${getTextVariantStyle(textVariant)}`}>
         {title}
       </Text>
       {IconRight && <IconRight />}

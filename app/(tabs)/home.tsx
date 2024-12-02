@@ -1,146 +1,138 @@
-import { SignedIn, SignedOut, useUser } from "@clerk/clerk-expo";
-import { Link } from "expo-router";
 
-import React from "react";
-import {
-  View,
-  Text,
-  TouchableOpacity,
-  Image,
-  ImageBackground,
-  TextInput,
-} from "react-native";
+import React, { useState, useEffect } from "react";
+import { View, Text, Image, TouchableOpacity, ScrollView } from "react-native";
 import { useRouter } from "expo-router";
-import { LinearGradient } from "expo-linear-gradient";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
+import { SafeAreaView } from "react-native-safe-area-context";
+import { Ionicons } from "@expo/vector-icons";
+import axios from "axios";
+import InputField from "@/components/InputField";
+import Card from "@/components/Card";
+import { useUser } from "@clerk/clerk-react";
+import { useFonts } from "expo-font";
 
 export default function HomeScreen() {
   const { user } = useUser();
   const router = useRouter();
+  const [userServices, setUserServices] = useState<any[]>([]); // State for purchased services
+  const [searchQuery, setSearchQuery] = useState(""); // State for search query
+  const [filteredServices, setFilteredServices] = useState<any[]>([]); // State for filtered services
+
+  const [loaded, error] = useFonts({
+    "AirbnbCereal-Black": require("../../assets/fonts/AirbnbCereal-Black.otf"),
+    "AirbnbCereal-Bold": require("../../assets/fonts/AirbnbCereal-Bold.otf"),
+    "AirbnbCereal-ExtraBold": require("../../assets/fonts/AirbnbCereal-ExtraBold.otf"),
+    "AirbnbCereal-Light": require("../../assets/fonts/AirbnbCereal-Light.otf"),
+    "AirbnbCereal-Regular": require("../../assets/fonts/AirbnbCereal-Regular.otf"),
+    "AirbnbCereal-SemiBold": require("../../assets/fonts/AirbnbCereal-SemiBold.otf"),
+  });
+
+  if (!loaded && !error) {
+    return null;
+  }
+
+  useEffect(() => {
+    if (user?.id) {
+      // Fetch user data using the user ID
+      axios
+        .get(`http://192.168.68.56:5000/api/users/${user.id}`)
+        .then((response) => {
+          // Assuming the services are in response.data.services
+          setUserServices(response.data.services || []);
+          setFilteredServices(response.data.services || []);
+        })
+        .catch((error) => {
+          console.error("Error fetching user services", error);
+        });
+    }
+  }, [user]);
+
+  // Handle search input change and filter services
+  const handleSearchChange = (text: string) => {
+    setSearchQuery(text);
+    // Filter services based on the search query
+    const filtered = userServices.filter((service) =>
+      service.serviceName.toLowerCase().includes(text.toLowerCase())
+    );
+    setFilteredServices(filtered);
+  };
 
   let profileUrl = user?.hasImage
     ? { uri: user.imageUrl }
     : require("../../assets/images/samnit123.jpg");
 
+  const handleViewAll = () => {
+    router.push("/(tabs)/projects")
+  };
+
   return (
-    <LinearGradient
-      className="p-4 h-screen "
-      colors={["#ffffff", "#d3ffb2c6", "#69ff75"]}
-      start={{ x: 0.2, y: 0.2 }}
-      end={{ x: 0.8, y: 1 }}
-    >
-      <SignedIn>
-        {/* Header */}
-        <View className="py-4 px-4 flex-row justify-between items-center">
-          <View>
-            <Text className="text-stone-400 font-semibold text-2xl">
-              Hello,
-            </Text>
-            <Text className="font-semibold text-2xl">{user?.fullName}</Text>
+    <GestureHandlerRootView style={{ flex: 1, backgroundColor: "white" }}>
+      <SafeAreaView style={{ flex: 1 }}>
+        <ScrollView
+          className="p-4"
+          showsHorizontalScrollIndicator={false}
+          showsVerticalScrollIndicator={false}
+          contentContainerStyle={{ flexGrow: 1 }}
+        >
+          <View className="flex flex-row items-center justify-between">
+            <TouchableOpacity onPress={() => { router.push("/(tabs)/profile") }}>
+              <Image source={profileUrl} className="w-11 h-11 rounded-full" />
+            </TouchableOpacity>
+            <TouchableOpacity
+              className="bg-emerald-150 p-2 rounded-xl"
+              onPress={() => {
+                router.push("/(pages)/notification");
+              }}
+            >
+              <Ionicons name="notifications-outline" size={28} />
+            </TouchableOpacity>
           </View>
-          <View>
-            <Image
-              source={profileUrl}
-              className="h-[57px] w-[57px] rounded-full"
-            />
+
+          <View className="mt-8">
+            <Text className="font-semiBold text-lg text-[#17171B]">Welcome Back</Text>
+            <Text className="font-semiBold text-4xl mt-2">Gurtaj Singh</Text>
+            <View>
+              <InputField
+                icon="search-outline"
+                value={searchQuery}
+                onChangeText={handleSearchChange}
+                containerStyle="mt-4"
+              />
+            </View>
           </View>
-        </View>
-        <View className="mx-2">
-          <TextInput
-            className="h-[45px] px-5 bg-[#f3f3f3] rounded-xl border-2 border-stone-300 font-semibold placeholder:font-inter placeholder:font-semibold placeholder:text-stone-300 text-stone-500 text-base"
-            placeholder="Search"
-          />
-        </View>
-        <Text className="font-semibold text-[30px] mt-3 px-4">
-          Explore More,
-        </Text>
-        <View className="flex-row flex-wrap gap-2 mt-2 justify-center">
-          <TouchableOpacity
-            onPress={() => {
-              router.push("/(pages)/itSolutions");
-            }}
-            className="bg-transparent h-[130px] w-[180px] rounded-xl flex-row justify-end items-end overflow-hidden"
-          >
-            <ImageBackground
-              source={require("../../assets/images/ITSolutions.png")}
-              resizeMode="cover"
-              className="h-[100%] w-[100%] flex justify-end items-end"
-            >
-              <Text className="font-semibold text-white p-3">IT Solutions</Text>
-            </ImageBackground>
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => {
-              router.push("/(pages)/caseStudy");
-            }}
-            className="bg-orange-400 h-[130px] w-[180px] rounded-xl flex-row justify-end items-end overflow-hidden"
-          >
-            <ImageBackground
-              source={require("../../assets/images/caseStudy.png")}
-              resizeMode="cover"
-              className="h-[100%] w-[100%] flex justify-end items-end"
-            >
-              <Text className="font-semibold text-white p-3">Case Studies</Text>
-            </ImageBackground>
-          </TouchableOpacity>
-          <TouchableOpacity
-            className="bg-orange-400 h-[130px] w-[180px] rounded-xl flex-row justify-end items-end overflow-hidden"
-            onPress={() => {
-              router.push("/(pages)/company");
-            }}
-          >
-            <ImageBackground
-              source={require("../../assets/images/company.png")}
-              resizeMode="cover"
-              className="h-[100%] w-[100%] flex justify-end items-end"
-            >
-              <Text className="font-semibold text-white p-3">Our Company</Text>
-            </ImageBackground>
-          </TouchableOpacity>
-          <TouchableOpacity className="bg-orange-400 h-[130px] w-[180px] rounded-xl flex-row justify-end items-end overflow-hidden">
-            <ImageBackground
-              source={require("../../assets/images/blog.png")}
-              resizeMode="cover"
-              className="h-[100%] w-[100%] flex justify-end items-end"
-            >
-              <Text className="font-semibold text-white p-3">
-                Blog and Posts
-              </Text>
-            </ImageBackground>
-          </TouchableOpacity>
-          <TouchableOpacity
-            className="bg-orange-400 h-[130px] w-[180px] rounded-xl flex-row justify-end items-end overflow-hidden"
-            onPress={() => router.push("/(pages)/contact")}
-          >
-            <ImageBackground
-              source={require("../../assets/images/aboutus.png")}
-              resizeMode="cover"
-              className="h-[100%] w-[100%] flex justify-end items-end"
-            >
-              <Text className="font-semibold text-white p-3">Contact Us</Text>
-            </ImageBackground>
-          </TouchableOpacity>
-          <TouchableOpacity
-            className="bg-orange-400 h-[130px] w-[180px] rounded-xl flex-row justify-end items-end overflow-hidden"
-            onPress={() => router.push("/(pages)/aboutUs")}
-          >
-            <ImageBackground
-              source={require("../../assets/images/contact.png")}
-              resizeMode="cover"
-              className="h-[100%] w-[100%] flex justify-end items-end"
-            >
-              <Text className="font-semibold text-white p-3">About Us</Text>
-            </ImageBackground>
-          </TouchableOpacity>
-        </View>
-      </SignedIn>
-      <SignedOut>
-        <Link href="/sign-in">
-          <Text>Sign In</Text>
-        </Link>
-        <Link href="/sign-up">
-          <Text>Sign Up</Text>
-        </Link>
-      </SignedOut>
-    </LinearGradient>
+
+          <View className="mt-8">
+            <View className="flex flex-row items-center justify-between">
+              <Text className="font-semiBold text-lg">My Projects</Text>
+              <TouchableOpacity className="bg-emerald-400 w-fit p-2 rounded-2xl" onPress={handleViewAll}>
+                <Text className="font-semiBold">View all</Text>
+              </TouchableOpacity>
+            </View>
+
+            <ScrollView horizontal showsHorizontalScrollIndicator={false} className="mt-4">
+              {filteredServices.map((service, index) => (
+                <Card
+                  key={index}
+                  title={service.serviceName}
+                  consultant={service.consultant || "Jane Cooper"}
+                  progress={Math.floor(Math.random() * 100)}
+                  image={service.imageUrl || require("../../assets/images/hacking.jpg")}
+                />
+              ))}
+            </ScrollView>
+          </View>
+
+          <View className="mt-8 mb-96">
+            <View className="flex flex-row items-center justify-between">
+              <Text className="font-semiBold text-lg">Today Tasks</Text>
+              <TouchableOpacity className="bg-emerald-400 w-fit p-2 rounded-2xl">
+                <Text className="font-semiBold">View all</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+        </ScrollView>
+      </SafeAreaView>
+    </GestureHandlerRootView >
   );
 }
+

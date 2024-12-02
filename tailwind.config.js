@@ -4,7 +4,13 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        inter: ['Inter_400Regular', 'Inter_700Bold']
+        regular: ['AirbnbCereal-Regular'],
+        Bold: ['AirbnbCereal-Bold'],
+        black: ['AirbnbCereal-Black'],
+        semiBold: ['AirbnbCereal-SemiBold'],
+        extraBold: ['AirbnbCereal-ExtraBold'],
+        Light: ['AirbnbCereal-Light']
+
       },
       colors: {
         primary: {

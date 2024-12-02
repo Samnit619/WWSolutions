@@ -48,7 +48,7 @@ const SignIn = () => {
   return (
     <SafeAreaView className="flex-1 bg-white">
       <ScrollView className="flex-1 bg-white">
-        <View className="flex-1 bg-white">
+        <View className="mt-8 flex-1 bg-white">
           <Text className="text-2xl text-black font-semibold pb-5 pl-5">
             Login to your Account
           </Text>
