@@ -18,7 +18,7 @@ const itSolutions = () => {
       <ScrollView className="h-screen p-4 bg-white">
         <Button
           className="rounded-full w-7 bg-transparent "
-          onPress={() => navigation.goBack()}
+          onPress={() => router.replace("/(tabs)/home")}
         >
           <Image
             source={require("../../assets/images/ItSolutions/arrow.png")}

@@ -6,7 +6,11 @@ const CaseStudyLayout = () => {
     <Stack>
       <Stack.Screen
         name="caseStudy"
-        options={{ title: "Case Study", headerShown: false }}
+        options={{
+          title: "Case Study",
+          headerShown: false,
+          statusBarStyle: "dark",
+        }}
       />
       <Stack.Screen
         name="itSolutions"
@@ -25,7 +29,6 @@ const CaseStudyLayout = () => {
         options={{
           statusBarStyle: "dark",
           headerShown: false,
-          statusBarColor: "#6cb676",
         }}
       />
       <Stack.Screen

@@ -38,7 +38,7 @@ export default function RootLayout() {
         <Stack>
           <Stack.Screen
             name="(pages)"
-            options={{ headerShown: false, statusBarStyle: "dark" }}
+            options={{ headerShown: false, statusBarStyle: "light" }}
           />
           <Stack.Screen name="(auth)" options={{ headerShown: false }} />
           <Stack.Screen

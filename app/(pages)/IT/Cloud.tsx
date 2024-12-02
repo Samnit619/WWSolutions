@@ -1,6 +1,6 @@
 import { View, Text, Image } from "react-native";
 import React from "react";
-import { useNavigation } from "expo-router";
+import { router, useNavigation } from "expo-router";
 import { Button, NativeBaseProvider, ScrollView } from "native-base";
 
 const Cloud = () => {
@@ -10,7 +10,7 @@ const Cloud = () => {
       <ScrollView className="p-4 h-screen bg-white">
         <Button
           className="rounded-full w-7 bg-transparent "
-          onPress={() => navigation.goBack()}
+          onPress={() => router.push("/(pages)/itSolutions")}
         >
           <Image
             source={require("../../../assets/images/ItSolutions/arrow.png")}
